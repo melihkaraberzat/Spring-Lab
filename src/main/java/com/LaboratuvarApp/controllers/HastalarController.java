@@ -42,6 +42,11 @@ public class HastalarController {
         return "redirect:/hastalar";
     }
 
+    @RequestMapping("/tekHasta/{id}")
+    @ResponseBody
+    public Optional<Hastalar> getHastaById(@PathVariable(value = "id")Integer id){
+        return hastalarService.getHastalarById(id);
+    }
 
 
 
