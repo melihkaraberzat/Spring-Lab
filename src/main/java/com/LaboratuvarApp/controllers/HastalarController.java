@@ -48,7 +48,11 @@ public class HastalarController {
         return hastalarService.getHastalarById(id);
     }
 
-
+    @RequestMapping(value = "/delete/{id}")
+    public String deleteHastalar(@PathVariable(value = "id")Integer Id){
+        hastalarService.deleteHastalar(Id);
+        return "redirect:/hastalar";
+    }
 
 
 
