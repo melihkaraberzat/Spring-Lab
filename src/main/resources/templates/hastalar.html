@@ -41,59 +41,162 @@
         <br>
     </tr>
 </table>
+
+
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
-    <form th:action="@{/addNew}" method="post">
+        <form th:action="@{/addNew}" method="post">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addModalLabel">Yeni Kayıt</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <!--<div class="form-group">
+                            <label  class="col-form-label">dosya no</label>
+                            <input type="text" class="form-control" id="dosyaNo"name="dosyaNo">
+                        </div>-->
+                        <div class="form-group">
+                            <label  class="col-form-label">AD:</label>
+                            <input type="text" class="form-control" id="hastaAdi" name="hastaAdi">
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-form-label">Soyad:</label>
+                            <input type="text" class="form-control" id="hastaSoyadi" name="hastaSoyadi">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">TC:</label>
+                            <input type="number" class="form-control" id="hastaTC" name="hastaTC">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Rapor Tarihi:</label>
+                            <input type="date" class="form-control" id="raporTarih" name="raporTarih">
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-form-label">Tanı başlığı:</label>
+                            <input type="class" class="form-control" id="taniBasligi" name="taniBasligi">
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-form-label">Tanı Detay:</label>
+                            <input type="text" class="form-control" id="taniDetaylari" name="taniDetaylari">
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                        <button type="submit" class="btn btn-primary">Kayıt ekle </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addModalLabel">Yeni Kayıt</h5>
+                    <h5 class="modal-title" id="editModalLabel">Kaydı Düzenleme</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-
-                    <!--<div class="form-group">
+                    <form id="formId"   method="post">
+                    <div class="form-group">
                         <label  class="col-form-label">dosya no</label>
-                        <input type="text" class="form-control" id="dosyaNo"name="dosyaNo">
-                    </div>-->
+                        <input  type="number" class="form-control" id="dosyaEdit"name="dosyaNo">
+                    </div>
                     <div class="form-group">
                         <label  class="col-form-label">AD:</label>
-                        <input type="text" class="form-control" id="hastaAdi" name="hastaAdi">
+                        <input type="text" class="form-control" id="adEdit" name="hastaAdi">
                     </div>
                     <div class="form-group">
                         <label  class="col-form-label">Soyad:</label>
-                        <input type="text" class="form-control" id="hastaSoyadi" name="hastaSoyadi">
+                        <input type="text" class="form-control" id="soyadEdit" name="hastaSoyadi">
                     </div>
                     <div class="form-group">
                         <label class="col-form-label">TC:</label>
-                        <input type="number" class="form-control" id="hastaTC" name="hastaTC">
+                        <input type="number" class="form-control" id="tcEdit" name="hastaTC">
                     </div>
                     <div class="form-group">
                         <label class="col-form-label">Rapor Tarihi:</label>
-                        <input type="date" class="form-control" id="raporTarih" name="raporTarih">
+                        <input type="text" class="form-control" id="raporTarihEdit" name="raporTarih">
                     </div>
                     <div class="form-group">
                         <label  class="col-form-label">Tanı başlığı:</label>
-                        <input type="class" class="form-control" id="taniBasligi" name="taniBasligi">
+                        <input type="text" class="form-control" id="taniBasligiEdit" name="taniBasligi">
                     </div>
                     <div class="form-group">
                         <label  class="col-form-label">Tanı Detay:</label>
-                        <input type="text" class="form-control" id="taniDetaylari" name="taniDetaylari">
+                        <input type="text" class="form-control" id="taniDetaylariEdit" name="taniDetaylari">
                     </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                    <button  class="btn btn-primary edit" type="submit" >Kaydı Düzenle </button>
+                    </div>
+                   </form>
+            </div>
+
+            </div>
+        </div>
+</div>
+
+<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="searchModalLabel">Kayıt Arama</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body-search" style="visibility: hidden">
+
+                    <div class="form-group" style="visibility: visible">
+                        <label  class="col-form-label">dosya no</label>
+                        <input  type="text" class="form-control" placeholder="Dosya numaranıza göre arama yapınız." id="dosyaNoArama"name="dosyaNoArama">
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-form-label">AD:</label>
+                        <input  type="text" class="form-control" id="adEditArama" name="hastaAdi">
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-form-label">Soyad:</label>
+                        <input   type="text" class="form-control" id="soyadEditArama" name="hastaSoyadi">
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">TC:</label>
+                        <input   type="number" class="form-control" id="tcEditArama" name="hastaTC">
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Rapor Tarihi:</label>
+                        <input   type="text" class="form-control" id="raporTarihEditArama" name="raporTarih">
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Tanı başlığı:</label>
+                        <input   type="text" class="form-control" id="taniBasligiEditArama" name="taniBasligi">
+                    </div>
+                    <div class="form-group">
+                    <div class="form-group">
+                        <label class="col-form-label">Tanı Detay:</label>
+                        <br>
+                        <textarea id="textarea" rows="5" cols="50"></textarea>
+                    </div>
+
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
-                    <button type="submit" class="btn btn-primary">Kayıt ekle </button>
+                    <button style="visibility: visible" type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                    <button style="visibility: visible" id="aramaYap" type="submit" class="btn btn-primary">Arama Yap </button>
                 </div>
             </div>
         </div>
-    </form>
+        </div>
 </div>
-
-
-
 
 
 
