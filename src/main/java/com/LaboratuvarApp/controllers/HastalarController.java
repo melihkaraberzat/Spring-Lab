@@ -67,5 +67,29 @@ public class HastalarController {
         return "redirect:/hastalar";
     }
 
+    @PostMapping(value = "/login",consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String login(@RequestParam(value = "username",required = false) String username,
+                        @RequestParam(value = "password",required = false) Long password,
+                        HttpSession session){
+        User user = userService.findUserByUsernameAndPassword(username,password);
+        if(user!=null){
+            session.setAttribute("loggedInUser",user);
+            // setUserSession
+            // session ve cookie
+            return "redirect:/hastalar";
+        }
+        else {
+            return "redirect:/home?hata";
+        }
+    }
+    @GetMapping("/")
+    public String redirectHome(){
+        return "redirect:/home";
+    }
 
+    @GetMapping("/home")
+    public String homePage(){
+
+        return "home";
+    }
 }
