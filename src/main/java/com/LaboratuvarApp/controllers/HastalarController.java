@@ -54,7 +54,18 @@ public class HastalarController {
         return "redirect:/hastalar";
     }
 
-
+    @PostMapping(path = "/update/{id}",consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String updateHasta(@PathVariable(value = "id") Integer id,Hastalar hastalar){
+        Hastalar updateHasta = hastalarService.getHastalarById(id).orElseThrow(()->new ExpressionException("HATA"));
+        updateHasta.setHastaAdi(hastalar.getHastaAdi());
+        updateHasta.setHastaSoyadi(hastalar.getHastaSoyadi());
+        updateHasta.setHastaTC(hastalar.getHastaTC());
+        updateHasta.setRaporTarih(hastalar.getRaporTarih());
+        updateHasta.setTaniBasligi(hastalar.getTaniBasligi());
+        updateHasta.setTaniDetaylari(hastalar.getTaniDetaylari());
+        hastalarService.updateHastalar(updateHasta);
+        return "redirect:/hastalar";
+    }
 
 
 }
